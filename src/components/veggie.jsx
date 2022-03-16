@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Veggie () {
   return (
-      <h1>veggie</h1>
+      <h4>veggie</h4>
   )
 }
