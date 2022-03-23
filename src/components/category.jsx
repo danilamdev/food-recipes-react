@@ -32,12 +32,10 @@ export default function Category () {
 
 const List = styled.div`
    display: flex;
+   width: 100%;
    justify-content: center;
    gap: 1em;
-   margin: 2rem 0;
-
-   
-
+   margin: 2rem auto;
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -49,10 +47,10 @@ const StyledNavLink = styled(NavLink)`
    font-weight: normal;
    border-radius: 50%;
    background: linear-gradient(35deg, #494949, #313131);
-   width: 6rem;
-   height: 6rem;
+   min-width: 5rem;
+   height: 5rem;
    cursor: pointer;
-   transform: scale(.7);
+   transform: scale(.9);
 
    &.active {
       background: linear-gradient(to right, #f27121, #e94057);
@@ -67,7 +65,7 @@ const StyledNavLink = styled(NavLink)`
    }
 
    h4 {
-      font-size: .9rem;
+      font-size: .7rem;
       font-weight: normal;
       margin-top: .7em;
       color: white;

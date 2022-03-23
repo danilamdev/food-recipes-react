@@ -3,6 +3,7 @@ import useMediaQuery from '../hooks/useMediaQuery'
 import { Wrapper, Card } from './slidestyle'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
+import { Link } from 'react-router-dom'
 
 export default function Veggie () {
   // const recipes = [...Array(9)].map((r, i) => ({ title: 'Almost before we know it', image: '/food.jpg', id: i }))
@@ -33,7 +34,7 @@ export default function Veggie () {
         <Wrapper>
           <h3>Veggie picks</h3>
           <Splide options={{
-            perPage: isMobile ? 1 : isDesktop ? 5 : 3,
+            perPage: isMobile ? 1 : 3,
             arrows: false,
             pagination: false,
             drag: 'free',
@@ -43,8 +44,10 @@ export default function Veggie () {
             return (
             <SplideSlide key={recipe.id}>
               <Card >
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
+                <Link to={'/recipe/' + recipe.id}>
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} alt={recipe.title} />
+                </Link>
               </Card>
             </SplideSlide>
             )

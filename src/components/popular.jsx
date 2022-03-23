@@ -3,6 +3,7 @@ import useMediaQuery from '../hooks/useMediaQuery'
 import { Wrapper, Card } from './slidestyle'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
+import { Link } from 'react-router-dom'
 
 export default function Popular () {
   // const recipes = [...Array(9)].map((r, i) => ({ title: 'Almost before we know it', image: '/food.jpg', id: i }))
@@ -31,7 +32,7 @@ export default function Popular () {
 
   return <div>
         <Wrapper>
-          <h3>Popular picks</h3>
+          <h3>Trending Now</h3>
           <Splide options={{
             perPage: isMobile ? 1 : isDesktop ? 5 : 3,
             arrows: false,
@@ -43,8 +44,10 @@ export default function Popular () {
             return (
             <SplideSlide key={recipe.id}>
               <Card >
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
+                <Link to={'/recipe/' + recipe.id}>
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} alt={recipe.title} />
+                </Link>
               </Card>
             </SplideSlide>
             )

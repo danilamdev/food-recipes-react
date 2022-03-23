@@ -13,11 +13,10 @@ body {
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 2.5rem;
   margin: 2rem 0;
   color: rgb(59, 59, 59);
-  letter-spacing: 1px;
 }
 
 .home-title {

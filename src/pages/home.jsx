@@ -1,18 +1,17 @@
 import React from 'react'
 import Veggie from '../components/veggie'
 import Popular from '../components/popular'
-import useMediaQuery from '../hooks/useMediaQuery'
+import { motion } from 'framer-motion'
 
 export default function Home () {
-  const { isTablet, isDesktop } = useMediaQuery()
-  //   const isTablet = result === 'tablet'
-  //   const isDesktop = result === 'desktop'
-
   return (
-     <div>
-        <h1 className='home-title' >Home - {isTablet ? 'tablet' : isDesktop ? 'desktop' : 'mobile'} </h1>
+     <motion.div
+     animate={{ opacity: 1 }}
+     initial={{ opacity: 0 }}
+     exit={{ opacity: 0 }}
+     transition={{ duration: 1 }}>
         <Veggie />
         <Popular />
-     </div>
+     </motion.div>
   )
 }

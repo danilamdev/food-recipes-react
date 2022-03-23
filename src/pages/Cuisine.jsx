@@ -9,25 +9,34 @@ export default function Cuisine () {
   const [cuisine, setCuisine] = useState([])
 
   const getCuisine = async (name) => {
+    console.log('getCuisine')
     const API_KEY = `apiKey=${import.meta.env.VITE_FOOD_API_KEY}`
     const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?${API_KEY}&cuisine=${name}`
     const data = await fetch(apiUrl)
     const recipes = await data.json()
+    console.log('recipes ', recipes)
     setCuisine(recipes.results)
   }
 
   useEffect(() => {
-    getCuisine('italian')
+    getCuisine(params.type)
     console.log(params)
   }, [params.type])
 
   return (
-      <Grid>
+      <Grid
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        >
         {cuisine.map(item => {
           return (
             <Card key={item.id}>
-              <img src={item.image} alt="" />
-              <h4>{item.title}</h4>
+              <Link to={'/recipe/' + item.id}>
+                <img src={item.image} alt="" />
+                <h4>{item.title}</h4>
+              </Link>
             </Card>
           )
         })}
@@ -35,7 +44,7 @@ export default function Cuisine () {
   )
 }
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 3rem;
